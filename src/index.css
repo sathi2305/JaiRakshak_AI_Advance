@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color-scheme: light dark;
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  /* Fill full horizontal viewport width across header, navigation bars, and dashboard modules (no empty side gutters) */
+  header .max-w-7xl,
+  nav .max-w-7xl,
+  main .max-w-7xl,
+  #root > div > div > .max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Clean subtle scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.35);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.65);
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.45);
+  }
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.6);
+  }
+
+  /* No scrollbar utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL DARK MODE THEME SYSTEM
+   Applies high-fidelity dark surfaces, hairline borders, and optical typography
+   ========================================================================== */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #030712;
+  color: #f3f4f6;
+}
+
+/* Elevate white card surfaces to deep rich midnight slate */
+.dark .bg-white {
+  background-color: #111827 !important;
+  color: #f3f4f6;
+}
+
+/* Elevate light slate backgrounds */
+.dark .bg-slate-50 {
+  background-color: #0b1120 !important;
+}
+
+.dark .bg-slate-100 {
+  background-color: #1e293b !important;
+}
+
+/* Subtly tint light cyan/blue/rose alerts so they don't blindingly glare in dark mode */
+.dark .bg-cyan-50 {
+  background-color: rgba(8, 145, 178, 0.12) !important;
+}
+
+.dark .bg-blue-50 {
+  background-color: rgba(37, 99, 235, 0.12) !important;
+}
+
+.dark .bg-rose-50 {
+  background-color: rgba(225, 29, 72, 0.12) !important;
+}
+
+.dark .bg-amber-50 {
+  background-color: rgba(217, 119, 6, 0.12) !important;
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+}
+
+/* Borders in dark mode */
+.dark .border-slate-200,
+.dark .border-slate-100 {
+  border-color: #1f293d !important;
+}
+
+.dark .border-slate-200\/80,
+.dark .border-slate-200\/90 {
+  border-color: rgba(31, 41, 61, 0.8) !important;
+}
+
+.dark .border-cyan-100,
+.dark .border-cyan-200 {
+  border-color: rgba(8, 145, 178, 0.3) !important;
+}
+
+.dark .border-rose-200 {
+  border-color: rgba(225, 29, 72, 0.3) !important;
+}
+
+.dark .border-amber-200 {
+  border-color: rgba(217, 119, 6, 0.3) !important;
+}
+
+.dark .border-emerald-100,
+.dark .border-emerald-200 {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Text adjustments for dark mode readability */
+.dark .text-slate-900 {
+  color: #f9fafb !important;
+}
+
+.dark .text-slate-800 {
+  color: #e5e7eb !important;
+}
+
+.dark .text-slate-700 {
+  color: #d1d5db !important;
+}
+
+.dark .text-slate-600 {
+  color: #9ca3af !important;
+}
+
+.dark .text-slate-500 {
+  color: #6b7280 !important;
+}
+
+/* Retain high-contrast colored text in dark mode */
+.dark .text-cyan-700,
+.dark .text-cyan-800,
+.dark .text-cyan-900,
+.dark .text-cyan-950 {
+  color: #38bdf8 !important;
+}
+
+.dark .text-blue-700,
+.dark .text-blue-800 {
+  color: #60a5fa !important;
+}
+
+.dark .text-rose-700,
+.dark .text-rose-800,
+.dark .text-rose-900 {
+  color: #fb7185 !important;
+}
+
+.dark .text-amber-700,
+.dark .text-amber-800 {
+  color: #fbbf24 !important;
+}
+
+.dark .text-emerald-700,
+.dark .text-emerald-800 {
+  color: #34d399 !important;
+}
+
+/* Soft dark card shadows */
+.dark .shadow-xs,
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-xl {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5) !important;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive app shell controls during print */
+  header,
+  nav,
+  aside,
+  button,
+  .print\\:hidden,
+  [role="alert"],
+  .fixed {
+    display: none !important;
+  }
+
+  /* Unconstrain scrollable containers so the entire multi-page report prints */
+  main,
+  #root,
+  .custom-scrollbar {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    background: transparent !important;
+  }
+
+  /* Professional report document formatting */
+  .print-report-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Avoid orphan headers and keep sections cohesive */
+  h1, h2, h3, h4, .print-avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Force borders and backgrounds to print sharply */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
